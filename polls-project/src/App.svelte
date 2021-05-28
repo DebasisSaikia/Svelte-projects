@@ -1,6 +1,7 @@
 <script>
   import Footer from "./components/Footer.svelte";
   import Header from "./components/Navbar.svelte";
+  import PollForm from "./components/PollForm.svelte";
   import Navigate from "./shared/Navigate.svelte";
 
   //   navigations
@@ -15,6 +16,11 @@
 <Header />
 <main>
   <Navigate {items} {activeItem} on:navChange={navChange} />
+  {#if activeItem === "Current Polls"}
+    <p>Here is the components</p>
+  {:else if activeItem === "Add new"}
+    <PollForm />
+  {/if}
 </main>
 <Footer />
 
