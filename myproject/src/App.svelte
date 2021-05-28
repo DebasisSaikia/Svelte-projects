@@ -1,4 +1,6 @@
 <script>
+  import Modal from "./Modal.svelte";
+
   let firstName = "Debasis";
   let lastName = "Saikia";
   let para = "Svelte";
@@ -33,6 +35,8 @@
   // conditionals
   let num = 5;
 </script>
+
+<Modal message="Keep it Up" isPromo={true} />
 
 <main>
   <!-- <h3>{`You will learn ${para} soon`}</h3>
