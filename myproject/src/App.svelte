@@ -40,13 +40,18 @@
 
   // conditionals
   let num = 5;
+  const addPerson = (e) => {
+    const person = e.detail;
+    people = [person, ...people];
+    showModal = false;
+  };
 </script>
 
 <Modal isPromo={true} {showModal} on:click={toggle}>
   <div slot="title">
     <h3>Add new items</h3>
   </div>
-  <AddPerson />
+  <AddPerson on:addPerson={addPerson} />
 </Modal>
 
 <main>

@@ -1,11 +1,22 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  let dispatch = createEventDispatcher();
+
   let name;
   let food;
   let age;
   let skills = [];
 
   const handleForm = () => {
-    console.log(name, food, age, skills);
+    const person = {
+      name,
+      food,
+      age,
+      skills,
+      id: Math.random(),
+    };
+    dispatch("addPerson", person);
   };
 </script>
 
@@ -27,5 +38,5 @@
     <option value="pizza">Pizza</option>
     <option value="noddles">Noddles</option>
   </select>
-  <button>Ad Person</button>
+  <button>Add Person</button>
 </form>
