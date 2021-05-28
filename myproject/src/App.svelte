@@ -1,5 +1,10 @@
 <script>
   import Modal from "./Modal.svelte";
+  let showModal = false;
+
+  const toggle = () => {
+    showModal = !showModal;
+  };
 
   let firstName = "Debasis";
   let lastName = "Saikia";
@@ -36,7 +41,7 @@
   let num = 5;
 </script>
 
-<Modal message="Keep it Up" isPromo={true} />
+<Modal message="Keep it Up" isPromo={true} {showModal} on:click={toggle} />
 
 <main>
   <!-- <h3>{`You will learn ${para} soon`}</h3>
@@ -51,6 +56,8 @@
   <input type="text" bind:value={firstName} />
   <input type="text" bind:value={lastName} />
   <input type="text" bind:value={beltColor} /> -->
+
+  <button on:click|once={toggle}>Open PopUp</button>
 
   <!-- looping -->
   {#each people as person (person.id)}
