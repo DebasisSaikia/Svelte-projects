@@ -29,6 +29,9 @@
   const handleDelete = (id) => {
     people = people.filter((person) => person.id !== id);
   };
+
+  // conditionals
+  let num = 5;
 </script>
 
 <main>
@@ -49,12 +52,24 @@
   {#each people as person (person.id)}
     <div>
       <h4>{person.name}</h4>
+      {#if person.food === "Chicken"}
+        <strong>Non Veg</strong>
+      {/if}
       <p>{person.age} years old and loves {person.food}</p>
       <button on:click={() => handleDelete(person.id)}>Delete</button>
     </div>
   {:else}
     <p>Nothing to show .....</p>
   {/each}
+
+  <!-- conditional loop -->
+  {#if num > 20}
+    <p>Greater then 20</p>
+  {:else if num > 5}
+    <p>Greater than 5</p>
+  {:else}
+    <p>Not greater than 5</p>
+  {/if}
 </main>
 
 <style>
