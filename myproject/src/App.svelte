@@ -1,5 +1,6 @@
 <script>
   import Modal from "./Modal.svelte";
+  import AddPerson from "./AddPerson.svelte";
   let showModal = false;
 
   const toggle = () => {
@@ -41,7 +42,12 @@
   let num = 5;
 </script>
 
-<Modal message="Keep it Up" isPromo={true} {showModal} on:click={toggle} />
+<Modal isPromo={true} {showModal} on:click={toggle}>
+  <div slot="title">
+    <h3>Add new items</h3>
+  </div>
+  <AddPerson />
+</Modal>
 
 <main>
   <!-- <h3>{`You will learn ${para} soon`}</h3>
