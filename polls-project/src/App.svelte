@@ -13,22 +13,25 @@
     activeItem = e.detail;
   };
 
-  // polls data
-  let polls = [
-    {
-      id: 1,
-      question: "React or Next",
-      answerA: "React",
-      answerB: "Next",
-      votesA: 9,
-      votesB: 10,
-    },
-  ];
   const handleAdd = (e) => {
     const poll = e.detail;
     polls = [poll, ...polls];
     console.log(polls);
     activeItem = "Current Polls";
+  };
+
+  const handleVote = (e) => {
+    const { id, option } = e.detail;
+    let copiedPolls = [...polls];
+    let upvotedPoll = copiedPolls.find((poll) => poll.id == id);
+
+    if (option === "a") {
+      upvotedPoll.votesA++;
+    }
+    if (option === "b") {
+      upvotedPoll.votesB++;
+    }
+    polls = copiedPolls;
   };
 </script>
 
@@ -36,7 +39,7 @@
 <main>
   <Navigate {items} {activeItem} on:navChange={navChange} />
   {#if activeItem === "Current Polls"}
-    <PollList {polls} />
+    <PollList on:vote={handleVote} />
   {:else if activeItem === "Add new"}
     <PollForm on:add={handleAdd} />
   {/if}
