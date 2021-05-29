@@ -2,6 +2,7 @@
   import Footer from "./components/Footer.svelte";
   import Header from "./components/Navbar.svelte";
   import PollForm from "./components/PollForm.svelte";
+  import PollList from "./components/PollList.svelte";
   import Navigate from "./shared/Navigate.svelte";
 
   //   navigations
@@ -11,15 +12,33 @@
   const navChange = (e) => {
     activeItem = e.detail;
   };
+
+  // polls data
+  let polls = [
+    {
+      id: 1,
+      question: "React or Next",
+      answerA: "React",
+      answerB: "Next",
+      votesA: 9,
+      votesB: 10,
+    },
+  ];
+  const handleAdd = (e) => {
+    const poll = e.detail;
+    polls = [poll, ...polls];
+    console.log(polls);
+    activeItem = "Current Polls";
+  };
 </script>
 
 <Header />
 <main>
   <Navigate {items} {activeItem} on:navChange={navChange} />
   {#if activeItem === "Current Polls"}
-    <p>Here is the components</p>
+    <PollList {polls} />
   {:else if activeItem === "Add new"}
-    <PollForm />
+    <PollForm on:add={handleAdd} />
   {/if}
 </main>
 <Footer />
