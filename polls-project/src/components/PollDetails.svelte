@@ -1,7 +1,7 @@
 <script>
   import Card from "./Card.svelte";
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
+  import PollStore from "../stores/PollStore";
+  import Button from "../shared/Button.svelte";
   export let poll = [];
 
   $: totalVotes = poll.votesA + poll.votesB;
@@ -9,7 +9,24 @@
   $: percentB = Math.floor((100 / totalVotes) * poll.votesB);
 
   const handleVote = (option, id) => {
-    dispatch("vote", { option, id });
+    PollStore.update((currentPolls) => {
+      let copiedPolls = [...currentPolls];
+      let upvotedPoll = copiedPolls.find((poll) => poll.id == id);
+
+      if (option === "a") {
+        upvotedPoll.votesA++;
+      }
+      if (option === "b") {
+        upvotedPoll.votesB++;
+      }
+      return copiedPolls;
+    });
+  };
+
+  const deletePoll = (id) => {
+    PollStore.update((currentPolls) => {
+      return currentPolls.filter((poll) => poll.id !== id);
+    });
   };
 </script>
 
@@ -24,11 +41,18 @@
     <div class="percent percent-b" style="width:{percentB} %" />
     <span>{poll.answerB} ({poll.votesB}) </span>
   </div>
+  <div class="delete">
+    <Button flat={true} on:click={() => deletePoll(poll.id)}>Delete</Button>
+  </div>
 </div>
 
 <Card />
 
 <style>
+  .delete {
+    text-align: center;
+    margin-top: 30px;
+  }
   h3 {
     margin: 0 auto;
     color: #555;
