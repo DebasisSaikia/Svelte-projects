@@ -12,3 +12,5 @@ const PollStore = writable([
 ]);
 
 export default PollStore;
+
+// store for sharing data
