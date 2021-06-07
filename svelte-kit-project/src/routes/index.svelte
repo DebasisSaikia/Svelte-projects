@@ -1,12 +1,13 @@
 <script>
-    console.log('svelte kit run')
+    import {pokemon} from '../stores/pokestores'
+    console.log($pokemon)
 </script>
 <svelte:head>
     <title>Svelte Kit -Homepage </title>
 </svelte:head>
 <h1>Svelte Kit Project</h1>
-<style>
-h1{
-    color: rgb(207, 207, 8);
-}
-</style>
+{#each $pokemon as pokeman }
+    <p>{pokeman.name}</p>
+{/each}
+
+
