@@ -1,5 +1,5 @@
 <script>
-	export let name;
+	const name = "Frontend Mafia";
 </script>
 
 <main>
@@ -11,16 +11,16 @@
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
-		height: 100vh;
+		/* height: 100vh; */
 		border-radius: 5px;
 		margin: 0 auto;
-		background-color: rgb(10, 10, 10);
+		/* background-color: rgb(10, 10, 10); */
 	}
 
 	h1 {
 		/* color: #201f1f; */
 		text-transform: uppercase;
-		font-size: 10em;
+		font-size: 5em;
 		font-weight: 500;
 		background: -webkit-linear-gradient(rgb(240, 135, 135), #333);
 		-webkit-background-clip: text;
