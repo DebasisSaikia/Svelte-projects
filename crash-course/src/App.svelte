@@ -1,10 +1,19 @@
 <script>
 	const name='<b>Debasis</b>'
+	const id='text';
+	let num=0
+	
 </script>
 
 <main>
 <h1>Hello Debasis</h1>
 {@html name}
+<h2 {id} >Heading</h2>
+{#if num===1}
+<h1>Hello 0</h1>
+{:else}
+<h1>Not 0</h1>
+{/if}
 </main>
 
 <style>
@@ -16,6 +25,10 @@
 		border-radius: 5px;
 		margin: 0 auto;
 		/* background-color: rgb(10, 10, 10); */
+	}
+	#text{
+		color: red;
+		font-size: 2rem;
 	}
 
 	h1 {
