@@ -1,9 +1,10 @@
 <script>
-	const name = "Frontend Mafia";
+	const name='<b>Debasis</b>'
 </script>
 
 <main>
-	<h1>Hello {name}</h1>
+<h1>Hello Debasis</h1>
+{@html name}
 </main>
 
 <style>
@@ -24,6 +25,7 @@
 		font-weight: 500;
 		background: -webkit-linear-gradient(rgb(240, 135, 135), #333);
 		-webkit-background-clip: text;
+		background-clip: text;
 		-webkit-text-fill-color: transparent;
 	}
 
